@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import Box from './component/Box';
+
 
 function App() {
+  let count = useSelector(state => state.count)
+    const dispatch = useDispatch()
+  
+    const addCount =()=>{
+     dispatch({type:"INCREMENT"})
+   
+    }
+    const Reduction = ()=>{
+      dispatch({type:"REDUCTION"})
+    }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <>
+    <h1>{count}</h1>
+    <button onClick={addCount}>클릭!</button>
+    <button onClick={Reduction}>감소!</button>
+    <Box/>
+    </>
   );
 }
 
